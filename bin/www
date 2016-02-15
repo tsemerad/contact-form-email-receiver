@@ -16,7 +16,6 @@ var http = require('http');
  var ipAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 
 
-var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
