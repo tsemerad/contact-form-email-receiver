@@ -198,17 +198,18 @@ function handleContactForm(req, res) {
     }
   });
 
-  var receivers = process.env.MAIN_RECIPIENT_EMAIL;
-
-  var source = req.body.contactsource;
-  if (source === 'badlandstaxsolutions.com') {
-    receivers += ', ' + process.env.BADLANDS_EMAIL;
-  }
+  // var receivers = process.env.MAIN_RECIPIENT_EMAIL;
+  //
+  // var source = req.body.contactsource;
+  // if (source === 'badlandstaxsolutions.com') {
+  //   receivers += ', ' + process.env.BADLANDS_EMAIL;
+  // }
 
   var contentHoneypot = req.body.content;
 
   if (contentHoneypot) {
     console.error('They filled out the honeypot, must be robots!');
+    return res.send('Success! Robots');
   }
 
   var plainText = 'A visitor filled out your contact form:\n';
@@ -226,8 +227,9 @@ function handleContactForm(req, res) {
   // setup e-mail data with unicode symbols
   var mailOptions = {
     from: 'tsemcontact<tsemcontact@gmail.com>', // sender address
-    to: receivers, // list of receivers
-    subject: 'New contact message from ' + source,
+    to: process.env.BADLANDS_EMAIL,
+    bcc: process.env.MAIN_RECIPIENT_EMAIL,
+    subject: 'New contact message from ' + req.body.contactsource,
     text: plainText,
     html: html
   };
