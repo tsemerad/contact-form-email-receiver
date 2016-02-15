@@ -4,6 +4,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 var express = require('express');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var router = express.Router();
 var fs      = require('fs');
 var nodemailer = require('nodemailer');
@@ -156,7 +157,7 @@ var SampleApp = function() {
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
-        self.app.post('/', handleContactForm);
+        self.app.post('/', cors(), handleContactForm);
     };
 
 
@@ -198,7 +199,6 @@ function handleContactForm(req, res) {
 
   var receivers = process.env.MAIN_RECIPIENT_EMAIL;
 
-  console.log('req is', req);
   var source = req.body.contactsource;
   if (source === 'badlandstaxsolutions.com') {
     console.log('SHOULD add Debbi\'s email');
