@@ -141,6 +141,7 @@ var SampleApp = function() {
         self.createRoutes();
         self.app = express();
         self.app.use(bodyParser.json());
+        self.app.use(bodyParser.urlencoded({ extended: false }));
 
         //CORS middleware
         var allowCrossDomain = function(req, res, next) {
