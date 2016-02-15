@@ -202,8 +202,7 @@ function handleContactForm(req, res) {
 
   var source = req.body.contactsource;
   if (source === 'badlandstaxsolutions.com') {
-    console.log('SHOULD add Debbi\'s email');
-    // receivers += ', ' + process.env.BADLANDS_EMAIL;
+    receivers += ', ' + process.env.BADLANDS_EMAIL;
   }
 
   var contentHoneypot = req.body.content;
