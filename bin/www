@@ -5,14 +5,14 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('nodetest:server');
+// var debug = require('debug')('nodetest:server');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
- var port = 8080
+ var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
  var ipAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 
 
