@@ -8,28 +8,22 @@
     "application",
     "openshift"
   ],
-  "author": {
-    "name": "ramr",
-    "email": "ramr@example.org",
-    "url":  "http://www.openshift.com/"
-  },
-  "homepage": "http://www.openshift.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ramr/nodejs-custom-version-openshift"
-  },
-
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js"
+  },
   "dependencies": {
-    "express": "*"
+    "body-parser": "^1.15.0",
+    "dotenv": "^2.0.0",
+    "express": "*",
+    "nodemailer": "^2.1.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }
